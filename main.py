@@ -68,16 +68,19 @@ input_str = input_str.lower()
 letter_list = []
 morse_list = []
 
-# Translate full input string to a python list of characters
+# Translate full input string
 for letter in input_str:
+
+    # Replace blank spaces with word_space found in dictionary
+    if letter == ' ':
+        letter = 'word_space'
+
+    # Add Letter to list of letters
     letter_list.append(letter)
 
-# Translate each letter to morse code equivalent
-for char in letter_list:
-    if char == ' ':
-        char = 'word_space'
-    morse_list.append(morse_dict[f'{char}'])
+    # Translate each letter to morse code and add to translated list
+    morse_list.append(morse_dict[f'{letter}'])
 
-# Join and append morse code list
+# Join translated list into translated string
 morse_str = morse_dict['char_space'].join(morse_list)
 print(morse_str)
